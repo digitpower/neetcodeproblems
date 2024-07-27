@@ -34,3 +34,28 @@ std::string LinkedList::ToStr()
     }
     return out.str();
 }
+
+bool LinkedList::SearchWithMoveToHead(int value)
+{
+    if(m_head == nullptr)
+        return false;
+
+    if(m_head->data == value)
+        return true;
+
+    Node* p = m_head;
+    while(p->next != nullptr)
+    {
+        Node* inspectedElement = p->next;
+        if(inspectedElement->data == value)
+        {
+            Node* elementAfterInspectedNode = inspectedElement->next;
+            p->next = elementAfterInspectedNode;
+            inspectedElement->next = m_head;
+            m_head = inspectedElement;
+            return true;
+        }
+        p = p->next;
+    }
+    return false;
+}
