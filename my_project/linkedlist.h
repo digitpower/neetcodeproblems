@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class LinkedList 
 {
 
@@ -8,7 +10,10 @@ public:
         int data;
         Node* next;
     };
-    Node* m_head = nullptr;
+    
     LinkedList();
+    void Add(int data);
+    std::string ToStr();
 private:
+    Node* m_head = nullptr;
 };
