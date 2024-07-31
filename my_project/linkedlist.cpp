@@ -59,3 +59,28 @@ bool LinkedList::SearchWithMoveToHead(int value)
     }
     return false;
 }
+
+void LinkedList::RemoveDupFromSorted()
+{
+    if(m_head == nullptr)
+        return;
+    Node* q = m_head;
+    Node* p = q->next;
+
+    while(p != nullptr)
+    {
+        if(q->data == p->data)
+        {
+            q->next = p->next;
+            auto oldP = p;
+            p = q->next;
+            delete oldP;
+        }
+        else
+        {
+            q = p;
+            p = p->next;
+        }
+    }
+
+}

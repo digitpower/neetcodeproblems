@@ -67,3 +67,50 @@ TEST(TestTopic, SearchWithMoveToHead)
     ASSERT_EQ(res, true);
     ASSERT_EQ(lst->ToStr(), "4 1 2 3 6 ");
 }
+
+TEST(TestTopic, RemoveDupsFromSortedLinkedList)
+{
+    {
+        LinkedList* lst = new LinkedList();
+
+        lst->Add(1);
+        lst->Add(2);
+        lst->Add(3);
+        lst->Add(3);
+        lst->Add(3);
+        lst->Add(4);
+        lst->Add(4);
+        lst->Add(5);
+
+        lst->RemoveDupFromSorted();
+
+        ASSERT_EQ(lst->ToStr(), "1 2 3 4 5 ");    
+    }
+
+    {
+        LinkedList* lst = new LinkedList();
+        lst->RemoveDupFromSorted();
+        ASSERT_EQ(lst->ToStr(), "");    
+    }
+    {
+        LinkedList* lst = new LinkedList();
+        lst->Add(1);
+        lst->RemoveDupFromSorted();
+        ASSERT_EQ(lst->ToStr(), "1 ");    
+    }
+    {
+        LinkedList* lst = new LinkedList();
+        lst->Add(1);
+        lst->Add(2);
+        lst->RemoveDupFromSorted();
+        ASSERT_EQ(lst->ToStr(), "1 2 ");    
+    }
+    {
+        LinkedList* lst = new LinkedList();
+        lst->Add(1);
+        lst->Add(1);
+        lst->Add(2);
+        lst->RemoveDupFromSorted();
+        ASSERT_EQ(lst->ToStr(), "1 2 ");    
+    }
+}

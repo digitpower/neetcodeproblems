@@ -15,6 +15,7 @@ public:
     void Add(int data);
     std::string ToStr();
     bool SearchWithMoveToHead(int value);
+    void RemoveDupFromSorted();
 private:
     Node* m_head = nullptr;
 };
