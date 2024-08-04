@@ -82,5 +82,21 @@ void LinkedList::RemoveDupFromSorted()
             p = p->next;
         }
     }
+}
 
+void LinkedList::Reverse()
+{
+    if(m_head == nullptr || m_head->next == nullptr)
+        return;
+    Node* p = m_head;
+    Node *q = p->next;
+    while(q != nullptr)
+    {
+        auto nextElement = q->next;
+        q->next = p;
+        p = q;
+        q = nextElement;
+    }
+    m_head->next = nullptr;
+    m_head = p;
 }

@@ -114,3 +114,14 @@ TEST(TestTopic, RemoveDupsFromSortedLinkedList)
         ASSERT_EQ(lst->ToStr(), "1 2 ");    
     }
 }
+
+TEST(TestTopic, ReverseLinkedList)
+{
+    LinkedList* lst = new LinkedList();
+    lst->Add(1);
+    lst->Add(2);
+    lst->Add(3);
+    lst->Reverse();
+    auto r = lst->ToStr();
+    ASSERT_EQ(lst->ToStr(), "3 2 1 ");
+}
