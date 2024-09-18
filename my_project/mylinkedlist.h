@@ -50,6 +50,41 @@ public:
     }
 
     void addAtIndex(int index, int val) {
+        if(index < 0)
+            return;
+        if(index == 0)
+        {
+            addAtHead(val);
+            return;
+        }
+        ListNode* newNode = new ListNode(val);
+        ListNode* tmp = m_head;
+        int indexCounter = 0;
+        while(indexCounter < index && tmp != nullptr)
+        {
+            tmp = tmp->next;
+            indexCounter++;
+        }
+
+        if(tmp == nullptr)
+        {
+            //Index at the end
+            if(indexCounter == index)
+            {
+                addAtTail(val);
+            }
+            //Index too large
+            return;
+        }
+
+        ListNode* nextNode = tmp;
+        ListNode* prevNode = tmp->prev;
+
+        newNode->next = nextNode;
+        newNode->prev = prevNode;
+
+        prevNode->next = newNode;
+        nextNode->prev = newNode;
 
     }
 

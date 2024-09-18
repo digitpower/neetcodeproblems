@@ -91,3 +91,68 @@ TEST(DesignLinkedList, getWorks)
         ASSERT_EQ(res, -1);
     }
 }
+
+TEST(DesignLinkedList, addAtIndex_NotEmptyList_AtValidIndex_Works)
+{
+    MyLinkedList lst;
+    lst.addAtHead(0);
+    lst.addAtHead(2);
+    lst.addAtHead(4);
+    lst.addAtHead(9);
+
+    lst.addAtIndex(2, 5);
+    ASSERT_EQ(lst.ToStr(), "9 4 5 2 0");
+    ASSERT_EQ(lst.ToStrReverse(), "0 2 5 4 9");
+
+    //In case index is list length, we add at the end
+    lst.addAtIndex(5, 8);
+    ASSERT_EQ(lst.ToStr(), "9 4 5 2 0 8");
+    ASSERT_EQ(lst.ToStrReverse(), "8 0 2 5 4 9");
+}
+
+TEST(DesignLinkedList, AddAtIndex_NotEmptyList_AtInvalidIndex_Works)
+{
+    MyLinkedList lst;
+    //In case index is larger than list length, we do not add anything
+    lst.addAtTail(1);
+    lst.addAtTail(2);
+    lst.addAtTail(3);
+
+    lst.addAtIndex(4, 7);
+    ASSERT_EQ(lst.ToStr(), "1 2 3");
+    ASSERT_EQ(lst.ToStrReverse(), "3 2 1");
+}
+
+TEST(DesignLinkedList, addAtIndex_NotEmptyList_AtNegative_Works)
+{
+    MyLinkedList lst;
+    lst.addAtTail(0);
+    lst.addAtTail(2);
+    lst.addAtTail(4);
+    lst.addAtTail(9);
+
+    lst.addAtIndex(-2, 5);
+    ASSERT_EQ(lst.ToStr(), "0 2 4 9");
+    ASSERT_EQ(lst.ToStrReverse(), "9 4 2 0");
+}
+
+TEST(DesignLinkedList, addAtIndexZero_NonEmptyList_Works)
+{
+    MyLinkedList lst;
+    lst.addAtTail(0);
+    lst.addAtTail(1);
+    lst.addAtTail(2);
+
+    lst.addAtIndex(0, 8);
+    ASSERT_EQ(lst.ToStr(), "8 0 1 2");
+    ASSERT_EQ(lst.ToStrReverse(), "2 1 0 8");
+}
+
+TEST(DesignLinkedList, addAtIndexZero_EmptyList_Works)
+{
+    MyLinkedList lst;
+    lst.addAtIndex(0, 8);
+
+    ASSERT_EQ(lst.ToStr(), "8");
+    ASSERT_EQ(lst.ToStrReverse(), "8");
+}
