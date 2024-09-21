@@ -156,3 +156,75 @@ TEST(DesignLinkedList, addAtIndexZero_EmptyList_Works)
     ASSERT_EQ(lst.ToStr(), "8");
     ASSERT_EQ(lst.ToStrReverse(), "8");
 }
+
+TEST(DesignLinkedList, deleteAtIndex_nonEmptyList_InTheMiddle_Works)
+{
+    MyLinkedList lst;
+    lst.addAtTail(0);
+    lst.addAtTail(1);
+    lst.addAtTail(2);
+
+    lst.deleteAtIndex(1);
+    ASSERT_EQ(lst.ToStr(), "0 2");
+    ASSERT_EQ(lst.ToStrReverse(), "2 0");
+}
+
+TEST(DesignLinkedList, deleteAtIndex_MoreThanOne_deleteAtEnd_Works)
+{
+    //DeleteAtTail
+    MyLinkedList lst;
+    lst.addAtTail(0);
+    lst.addAtTail(1);
+    lst.addAtTail(2);
+    lst.deleteAtIndex(2);
+    ASSERT_EQ(lst.ToStr(), "0 1");
+    ASSERT_EQ(lst.ToStrReverse(), "1 0");
+}
+
+TEST(DesignLinkedList, deleteAtIndex_MoreThanOne_deleteAtBeginning_Works)
+{
+    //DeleteAtFront
+    MyLinkedList lst;
+    lst.addAtTail(0);
+    lst.addAtTail(1);
+    lst.addAtTail(2);
+    lst.deleteAtIndex(0);
+    ASSERT_EQ(lst.ToStr(), "1 2");
+    ASSERT_EQ(lst.ToStrReverse(), "2 1");
+}
+
+
+TEST(DesignLinkedList, DeleteSingleElementLinkedList_Works)
+{
+    //DeleteSingleElement list
+    MyLinkedList lst;
+    lst.addAtTail(0);
+    lst.deleteAtIndex(0);
+    ASSERT_EQ(lst.ToStr(), "");
+    ASSERT_EQ(lst.ToStrReverse(), "");
+}
+
+TEST(DesignLinkedList, DeleteEmptyList_Works)
+{
+    //Delete Empty list
+    MyLinkedList lst;
+    lst.deleteAtIndex(0);
+    ASSERT_EQ(lst.ToStr(), "");
+    ASSERT_EQ(lst.ToStrReverse(), "");
+}
+
+TEST(DesignLinkedList, deleteAtIndex_NoNormalIndex_Works)
+{
+    MyLinkedList lst;
+    lst.addAtTail(0);
+    lst.addAtTail(1);
+    lst.addAtTail(2);
+
+    lst.deleteAtIndex(3);
+    ASSERT_EQ(lst.ToStr(), "0 1 2");
+    ASSERT_EQ(lst.ToStrReverse(), "2 1 0");
+
+    lst.deleteAtIndex(-1);
+    ASSERT_EQ(lst.ToStr(), "0 1 2");
+    ASSERT_EQ(lst.ToStrReverse(), "2 1 0");
+}

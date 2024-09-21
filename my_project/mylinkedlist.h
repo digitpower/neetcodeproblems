@@ -4,8 +4,8 @@ private:
     struct ListNode {
         ListNode(int _val) : val(_val)
         {}
-        ListNode* next;
-        ListNode* prev;
+        ListNode* next = nullptr;
+        ListNode* prev = nullptr;
         int val;
     };
     ListNode* m_head = nullptr; 
@@ -89,6 +89,48 @@ public:
     }
 
     void deleteAtIndex(int index) {
+        if(index < 0)
+            return;
+        int indexCounter = 0;
+        ListNode* tmp = m_head;
+        while(indexCounter < index && tmp != nullptr)
+        {
+            tmp = tmp->next;
+            indexCounter++;
+        }
+        if(tmp == nullptr)
+            return;
+
+        ListNode* prev = tmp->prev;
+        ListNode* next = tmp->next;
+
+        if(prev != nullptr && next != nullptr)
+        {
+            prev->next = next;
+            next->prev = prev;
+        }
+        else if(prev == nullptr)
+        {
+            if(next != nullptr)
+            {
+                next->prev = nullptr;
+                m_head = next;
+            }
+            else
+                m_head = m_tail = nullptr;
+        }
+        else
+        {
+            if(prev != nullptr)
+            {
+                prev->next = nullptr;
+                m_tail = prev;
+            }
+            else
+                m_head = m_tail = nullptr;
+        }
+
+        delete tmp;
     }
 
     std::string ToStrReverse()
