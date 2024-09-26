@@ -1,13 +1,8 @@
 #include <sstream>
+#include "utils.h"
+
 class MyLinkedList {
-private:
-    struct ListNode {
-        ListNode(int _val) : val(_val)
-        {}
-        ListNode* next = nullptr;
-        ListNode* prev = nullptr;
-        int val;
-    };
+public:
     ListNode* m_head = nullptr; 
     ListNode* m_tail = nullptr;
 public:
@@ -131,34 +126,6 @@ public:
         }
 
         delete tmp;
-    }
-
-    std::string ToStrReverse()
-    {
-        ListNode* p = m_tail;
-        std::ostringstream out;
-        while(p != nullptr)
-        {
-            out << p->val;
-            if(p->prev != nullptr)
-                out << " ";
-            p = p->prev;
-        }
-        return out.str();
-    }
-
-    std::string ToStr()
-    {
-        ListNode* p = m_head;
-        std::ostringstream out;
-        while(p != nullptr)
-        {
-            out << p->val;
-            if(p->next != nullptr)
-                out << " ";
-            p = p->next;
-        }
-        return out.str();
     }
 };
 
