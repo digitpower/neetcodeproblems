@@ -4,7 +4,6 @@
 
 class ReverseRecursively
 {
-    bool visitedFirstTime = true;
 public:
     ListNode* ReverseLinkedList(ListNode* head)
     {
@@ -15,17 +14,11 @@ public:
         ListNode* currNode = head;
         ListNode* nextNode = head->next;
 
-        if(visitedFirstTime == true)
-        {
-            currNode->next = nullptr;
-            visitedFirstTime = false;
-        }
         if(nextNode == nullptr)
-        {
             return currNode;
-        }
         ListNode* res =  ReverseLinkedList(nextNode);
         nextNode->next = currNode;
+        currNode->next = nullptr;
         return res;
     }
 };
