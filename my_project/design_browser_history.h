@@ -37,16 +37,40 @@ public:
     
     void visit(string url) {
         ListNode* newNode = new ListNode(url);
+
+
+        ListNode* nextNode = m_curr->next;
+        while(nextNode != m_dummyTail)
+        {
+            ListNode* forDeletion = nextNode;
+            nextNode = nextNode->next;
+            delete forDeletion;
+        }
+
+
+
         insertBetweenNodes(newNode, m_curr, m_dummyTail);
         m_curr = newNode;
     }
     
     string back(int steps) {
-        
+        int counter = 0;
+        while(counter < steps && m_curr->prev != m_dummyHead)
+        {
+            m_curr = m_curr->prev;
+            counter++;
+        }
+        return m_curr->val;
     }
     
     string forward(int steps) {
-        
+        int counter = 0;
+        while(m_curr->next != m_dummyTail && counter < steps)
+        {
+            counter++;
+            m_curr = m_curr->next;
+        }
+        return m_curr->val;
     }
 
     std::string ToStrReverse()
