@@ -34,3 +34,15 @@ std::string ListToStr(ListNode* head)
     }
     return out.str();
 }
+
+std::string ArrayRepr(int (&arr)[], int sz)
+{
+    std::ostringstream out;
+    for (size_t i = 0; i < sz; i++)
+    {
+        out << arr[i];
+        if(i < sz - 1)
+            out << " ";
+    }
+    return out.str();
+}
