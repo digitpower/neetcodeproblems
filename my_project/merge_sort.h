@@ -50,10 +50,6 @@ void merge_sort(int (&array)[], int start, int sz, int (&tmpArray)[])
         return;
     //sz = 7  0 3
     merge_sort(array, start, sz/2, tmpArray);
-    auto leftStart = start;
-    auto leftSize = sz/2;
     merge_sort(array, start + sz/2, sz - sz/2, tmpArray);
-    auto rightStart = start + sz/2;
-    auto rightSize = sz - sz/2;
-    merge_intervals(array, leftStart, leftSize, rightStart, rightSize, tmpArray);
+    merge_intervals(array, start, sz/2, start + sz/2, sz - sz/2, tmpArray);
 }
