@@ -46,3 +46,15 @@ std::string ArrayRepr(int (&arr)[], int sz)
     }
     return out.str();
 }
+
+ListNode* GenerateLinkedList(const std::vector<int>& numbers)
+{
+    ListNode* dummy = new ListNode(-1);
+    ListNode* start = dummy;
+    for (auto number : numbers)
+    {
+        start->next = new ListNode(number);
+        start = start->next;
+    }
+    return dummy->next;
+}
