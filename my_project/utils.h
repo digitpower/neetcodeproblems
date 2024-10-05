@@ -1,60 +1,20 @@
+#pragma once
 #include <string>
 #include <sstream>
+#include <vector>
 
 struct ListNode {
-    ListNode(int _val) : val(_val) {}
-    ListNode* next;
-    ListNode* prev;
+    ListNode(int _val) : 
+        val(_val) {}
+    ListNode* next = nullptr;
+    ListNode* prev = nullptr;
     int val;
 };
 
-std::string ListToStrReverse(ListNode* tail)
-{
-    ListNode* p = tail;
-    std::ostringstream out;
-    while(p != nullptr)
-    {
-        out << p->val;
-        if(p->prev != nullptr)
-            out << " ";
-        p = p->prev;
-    }
-    return out.str();
-}
-std::string ListToStr(ListNode* head)
-{
-    ListNode* p = head;
-    std::ostringstream out;
-    while(p != nullptr)
-    {
-        out << p->val;
-        if(p->next != nullptr)
-            out << " ";
-        p = p->next;
-    }
-    return out.str();
-}
+std::string ListToStrReverse(ListNode* tail);
 
-std::string ArrayRepr(int (&arr)[], int sz)
-{
-    std::ostringstream out;
-    for (size_t i = 0; i < sz; i++)
-    {
-        out << arr[i];
-        if(i < sz - 1)
-            out << " ";
-    }
-    return out.str();
-}
+std::string ListToStr(ListNode* head);
 
-ListNode* GenerateLinkedList(const std::vector<int>& numbers)
-{
-    ListNode* dummy = new ListNode(-1);
-    ListNode* start = dummy;
-    for (auto number : numbers)
-    {
-        start->next = new ListNode(number);
-        start = start->next;
-    }
-    return dummy->next;
-}
+std::string ArrayRepr(int (&arr)[], int sz, int startIndex = 0);
+
+ListNode* GenerateLinkedList(const std::vector<int>& numbers);
