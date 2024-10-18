@@ -9,3 +9,4 @@ services:
     tty: true
     volumes:
       - ./problems_and_tests:/home/user/projects/problems_and_tests
+      - /home/user/projects/problems_and_tests/build
