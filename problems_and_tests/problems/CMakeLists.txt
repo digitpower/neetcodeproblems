@@ -20,6 +20,10 @@ if(BUILD_TESTING)
     add_executable(quick_sort_tests utils.cpp quick_sort_tests.cpp)
     target_link_libraries(quick_sort_tests PRIVATE GTest::gtest_main)
 
+    add_executable(tree_tests tree_tests.cpp insert_into_bst.cpp inorder_traverse.cpp)
+    target_link_libraries(tree_tests PRIVATE GTest::gtest_main)
+
+
     # add_executable()
     include(GoogleTest)
     gtest_discover_tests(neetcode_linked_list_tests)
@@ -27,4 +31,5 @@ if(BUILD_TESTING)
     gtest_discover_tests(sorting_tests)
     gtest_discover_tests(merge_k_sorted_lists_tests)
     gtest_discover_tests(quick_sort_tests)
+    gtest_discover_tests(tree_tests)
 endif()

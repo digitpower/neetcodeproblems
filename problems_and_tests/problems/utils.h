@@ -18,3 +18,13 @@ std::string ListToStr(ListNode* head);
 std::string ArrayRepr(int (&arr)[], int sz, int startIndex = 0);
 
 ListNode* GenerateLinkedList(const std::vector<int>& numbers);
+
+
+
+struct TreeNode
+{
+    TreeNode(int _val) : val(_val) {}
+    int val = 0;
+    TreeNode* left = nullptr;
+    TreeNode* right = nullptr;
+};

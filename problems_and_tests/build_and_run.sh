@@ -14,3 +14,4 @@ GTEST_COLOR=1 ctest --test-dir build --output-on-failure -j4
 ./build/problems/sorting_tests
 ./build/problems/merge_k_sorted_lists_tests
 ./build/problems/quick_sort_tests
+./build/problems/tree_tests
