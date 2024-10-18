@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  neetcode_problems:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./problems_and_tests:/home/user/projects/problems_and_tests
