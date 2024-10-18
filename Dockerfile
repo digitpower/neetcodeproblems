@@ -17,6 +17,8 @@ COPY problems_and_tests problems_and_tests
 ARG PROBLEMS_DIR=${PROJECTS_DIR}/problems_and_tests
 
 WORKDIR ${PROBLEMS_DIR}
+
+RUN echo Running Configure
 #Configure
 RUN cmake -B build -S . -DCMAKE_BUILD_TYPE=Debug
 
